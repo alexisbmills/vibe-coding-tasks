@@ -1,0 +1,93 @@
+# Vite/React Router SPA Rules
+
+# File Structure
+src/
+  components/     # Reusable UI components
+  pages/         # Page components (one per route)
+  layouts/       # Layout components
+  hooks/         # Custom React hooks
+  utils/         # Utility functions
+  types/         # TypeScript type definitions
+  services/      # API and external service integrations
+  assets/        # Static assets (images, fonts, etc.)
+  styles/        # Global styles and theme definitions
+
+# Naming Conventions
+- Use PascalCase for React components and TypeScript interfaces/types
+- Use camelCase for functions, variables, and file names
+- Use kebab-case for CSS/SCSS files
+- Suffix React components with .tsx
+- Suffix utility files with .ts
+- Suffix test files with .test.tsx or .spec.tsx
+
+# Component Rules
+- Keep components small and focused (max 300 lines)
+- Use functional components with TypeScript
+- Implement proper prop typing
+- Use React.memo() for performance optimization when needed
+- Implement error boundaries for critical components
+
+# Routing Rules
+- Define routes in a central routes configuration file
+- Use lazy loading for route components
+- Implement proper route guards where needed
+- Use nested routes for complex layouts
+- Keep route paths in constants
+
+# State Management
+- Use React Context for global state
+- Use local state for component-specific state
+- Consider Redux Toolkit for complex state management
+- Implement proper loading and error states
+
+# API Integration
+- Use React Query for data fetching
+- Implement proper error handling
+- Use environment variables for API endpoints
+- Implement request/response interceptors
+
+# Performance
+- Implement code splitting
+- Use proper image optimization
+- Implement proper caching strategies
+- Use React.lazy() for route-based code splitting
+
+# Testing
+- Write unit tests for utilities
+- Write component tests using React Testing Library
+- Maintain minimum 80% test coverage
+
+# E2E Testing
+- Implement E2E tests for critical flows
+- Utilise test selectors such as `data-test-e2e` or `data-test-e2e-list-item-identifier` rather than text content or labels
+
+# Accessibility
+- Use semantic HTML elements
+- Implement proper ARIA attributes
+- Ensure keyboard navigation
+- Maintain proper color contrast
+
+# Security
+- Implement proper authentication flow
+- Use HTTPS for all API calls
+- Sanitize user inputs
+- Implement proper CORS policies
+
+# Code Style
+- Use 2 spaces for indentation
+- Max line length: 80 characters
+- Use semicolons
+- Use single quotes for strings
+- Use trailing commas in multiline objects/arrays
+
+# Git
+- Use conventional commits
+- Keep commits atomic and focused
+- Write meaningful commit messages
+- Use feature branches
+
+# Documentation
+- Document complex functions
+- Maintain up-to-date README
+- Document component props
+- Keep API documentation current 
