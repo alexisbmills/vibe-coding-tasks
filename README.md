@@ -15,6 +15,10 @@ This is a personal project demonstrating modern web development techniques. It's
 - **Responsive Design:** Seamless experience across all device sizes
 - **Accessibility:** Full keyboard navigation with ARIA support
 
+## Demo
+
+![Task Management Demo](./docs/demo.gif)
+
 ## Technical Stack
 
 - **Frontend:** React 18 with TypeScript
@@ -50,7 +54,19 @@ Unit/E2E Tests were generated using a combination of prompt engineering and manu
 - Run tests with coverage: `npm run test:coverage`
 - Run tests once: `npm run test:run`
 
+##### Unit Test Coverage
+
+The test coverage report reports positively for most code that should have unit tests.
+
+![Unit Test Coverage Report](./docs/unit-test-coverage.PNG)
+
 #### E2E Tests
 - Run E2E tests with UI: `npm run test:e2e:ui`
 - Debug E2E tests: `npm run test:e2e:debug`
 - View E2E test report: `npm run test:e2e:report`
+
+##### E2E Test Report
+
+I've left some failures in here to highlight the challenges around prompt engineering for E2E. It could also be an area for my own improvement and additionally in the tooling to enable this. 
+
+![E2E Test Report](./docs/e2e-test-report.PNG)
