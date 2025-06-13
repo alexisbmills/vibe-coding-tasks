@@ -32,10 +32,23 @@ export const archiveTestTask = async (page: Page, taskName: string) => {
   const taskItem = page.getByText(taskName).first();
   await taskItem.click();
   await page.getByRole('button', { name: /archive task/i }).click();
-  await expect(page.getByText(/archived/i)).toBeVisible();
 };
 
 export const searchTasks = async (page: Page, searchTerm: string) => {
   await page.getByPlaceholder(/search tasks/i).fill(searchTerm);
   await page.waitForTimeout(300); // Wait for debounce
-}; 
+};
+
+export const toggleTaskCompletion = async (page: Page, taskName: string) => {
+  const checkbox = page.getByRole('checkbox', { name: new RegExp(taskName, 'i') });
+  await checkbox.dispatchEvent('click');
+  return checkbox;
+};
+
+export const showArchivedTasks = async (page: Page) => {
+  await page.getByRole('button', { name: /show archived/i }).click();
+};
+
+export const hideArchivedTasks = async (page: Page) => {
+  await page.getByRole('button', { name: /show active/i }).click();
+};

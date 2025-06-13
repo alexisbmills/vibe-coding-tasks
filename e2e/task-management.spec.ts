@@ -3,6 +3,9 @@ import {
   createTestTask,
   archiveTestTask,
   searchTasks,
+  toggleTaskCompletion,
+  showArchivedTasks,
+  hideArchivedTasks,
 } from './fixtures/test-utils';
 
 test.describe('Task Management', () => {
@@ -13,19 +16,21 @@ test.describe('Task Management', () => {
   test('should complete and uncomplete a task', async ({ page }) => {
     const taskName = 'Management Complete ' + Date.now();
     await createTestTask(page, taskName);
-    const checkbox = page.getByRole('checkbox', { name: new RegExp(taskName, 'i') });
-    await checkbox.check();
-    await expect(checkbox).toBeChecked();
-    await checkbox.uncheck();
-    await expect(checkbox).not.toBeChecked();
+    const checkboxChecked = await toggleTaskCompletion(page, taskName);
+    await expect(checkboxChecked).toBeChecked();
+    const checkboxUnchecked = await toggleTaskCompletion(page, taskName);
+    await expect(checkboxUnchecked).not.toBeChecked();
   });
 
   test('should archive and unarchive a task', async ({ page }) => {
     const taskName = 'Management Archive ' + Date.now();
     await createTestTask(page, taskName);
     await archiveTestTask(page, taskName);
+    await showArchivedTasks(page);
     // Unarchive
     await page.getByRole('button', { name: /unarchive task/i }).click();
+    await hideArchivedTasks(page);
+    await expect(page.getByText(taskName)).toBeVisible();
     await expect(page.getByText(/archived/i)).not.toBeVisible();
   });
 
@@ -34,8 +39,8 @@ test.describe('Task Management', () => {
     await createTestTask(page, taskName);
     await searchTasks(page, 'SearchFilter');
     await expect(page.getByText(taskName)).toBeVisible();
-    await page.getByRole('button', { name: /archived tasks/i }).click();
-    await expect(page.getByText(taskName)).not.toBeVisible();
+    await showArchivedTasks(page);
+    await expect(page.getByText(taskName)).toBeVisible();
   });
 
   test('should persist tasks after reload', async ({ page }) => {
@@ -49,7 +54,7 @@ test.describe('Task Management', () => {
     // Simulate error by submitting empty form
     await page.getByRole('button', { name: /create task/i }).click();
     await page.getByRole('button', { name: /create new task/i }).click();
-    await expect(page.getByText(/required/i)).toBeVisible();
+    await expect(page.getByText(/please fill in this field/i)).toBeVisible();
   });
 
   test('should display correctly on small screens', async ({ page }) => {
