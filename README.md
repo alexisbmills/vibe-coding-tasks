@@ -1,54 +1,56 @@
-# React + TypeScript + Vite
+# Vibe Coding - Tasks List
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern task management application built with React and TypeScript, developed using Prompt Engineering (Vibe Coding). The application code, tests, and content are primarily generated through AI assistance using Cursor and Google Gemini.
 
-Currently, two official plugins are available:
+## About
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This is a personal project demonstrating modern web development techniques. It's a feature-rich task management application that allows users to effectively organize and track their tasks.
 
-## Expanding the ESLint configuration
+### Key Features
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **Task Management:** Create, read, update, and delete tasks with a clean, intuitive interface
+- **Search & Filtering:** Real-time search and archive filtering capabilities
+- **Task Archiving:** Keep your active list organized by archiving completed tasks
+- **Data Persistence:** Automatic task saving to local storage
+- **Responsive Design:** Seamless experience across all device sizes
+- **Accessibility:** Full keyboard navigation with ARIA support
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## Technical Stack
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- **Frontend:** React 18 with TypeScript
+- **Build Tool:** Vite
+- **UI Framework:** Chakra UI
+- **Routing:** React Router v6
+- **Testing:** Vitest and React Testing Library for unit tests, Playwright for E2E
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Getting Started
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+### Prerequisites
+
+- Node.js
+- npm (Node Package Manager)
+
+### Installation
+
+1. Clone the repository
+2. Install dependencies: `npm install`.
+
+## Development
+
+### Building the demo application (not production ready)
+
+To build and run a local version of this app: `npm run dev`. Open your browser to http://localhost:5173.
+
+### Running Tests
+
+Unit/E2E Tests were generated using a combination of prompt engineering and manual intervention.
+
+#### Unit Tests
+- Run tests in watch mode: `npm test`
+- Run tests with coverage: `npm run test:coverage`
+- Run tests once: `npm run test:run`
+
+#### E2E Tests
+- Run E2E tests with UI: `npm run test:e2e:ui`
+- Debug E2E tests: `npm run test:e2e:debug`
+- View E2E test report: `npm run test:e2e:report`
